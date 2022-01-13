@@ -4,4 +4,4 @@
 
 pkgload::load_all(export_all = FALSE, helpers = FALSE, attach_testthat = FALSE)
 options("golem.app.prod" = TRUE)
-econdashboard::run_app() # add parameters here (if any)
+fundos_banestes::run_app() # add parameters here (if any)
