@@ -1,4 +1,4 @@
-Package: fundos_banestes
+Package: fundosbanestes
 Title: Fundos Banestes
 Version: 0.0.0.9000
 Authors@R: person('Alberson', 'Miranda', email = 'albersonmiranda@hotmail.com', role = c('cre', 'aut'))
