@@ -5,7 +5,7 @@
 #'
 #' @noRd
 app_sys <- function(...) {
-  system.file(..., package = "fundos_banestes")
+  system.file(..., package = "fundosbanestes")
 }
 
 
