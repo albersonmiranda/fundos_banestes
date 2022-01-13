@@ -1,0 +1,185 @@
+/* incluindo fonte banestes */
+@font-face {
+    font-family: WhitneyHTF;
+    src: url("fontes/WhitneyHTF-Book.otf") format("opentype");
+}
+
+/* fonte das boxes e resenhas */
+.res-tit, .res-body, .box-tit, .box-subtit, .box-body, .box-legenda, .conj-body, .conj-tit, .sidebar, .description-block>.description-header, .description-block>.description-text {
+  font-family: "WhitneyHTF";
+}
+
+/* título da página conjuntura */
+.conj-tit {
+  text-align: center;
+  font-size: 32px;
+  color: #004b8d;
+}
+
+/* corpo da página conjuntura */
+.conj-body {
+  text-align: center;
+  font-size: 20px;
+  color: #004b8d;
+}
+
+/* boxes warning resenha */
+.box.box-solid.bg-yellow  {
+  background-color: #fafdff !important;
+  border-style: solid;
+  border-width: thin;
+  border-color: #004b8d;
+}
+
+/* boxes warning exceto resenha */
+.box.box-solid.box-warning {
+  background-color: white !important;
+  border-style: solid;
+  border-width: thin;
+  border-color: #004b8d;
+}
+
+/* boxes warning exceto resenha - header */
+.box.box-solid.box-warning>.box-header {
+  background-color: #004b8d !important;
+}
+
+/* título da resenha */
+.res-tit {
+  font-size: 26px;
+  padding: 0px;
+  color: white;
+}
+
+/* corpo da resenha */
+.res-body {
+  font-size: 14px;
+  color: #004b8d;
+  text-align: left;
+  padding: 10px;
+  text-align: justify;
+}
+
+/* título das boxes de conjuntura */
+.box-tit {
+  font-size: 26px;
+  
+}
+
+/* título das boxes dos gráficos fundos */
+.box-graf {
+  font-size: 18px;
+
+}
+
+/* subtítulo das boxes */
+.box-subtit {
+  font-size: 18px;
+  color: #808080;
+}
+
+/* corpo das boxes */
+.box-body {
+  font-size: 14px;
+  color: #808080;
+  padding: 1px;
+  text-align: justify;
+}
+
+/* legenda das boxes */
+.box-legenda {
+  font-size: 12px;
+  color: #808080;
+  padding: 1px;
+}
+
+/* caracteristicas do fundo */
+.carac-fundos {
+  font-weight: 600;
+  font-size: 16px;
+  color: #56af31; 
+}
+
+/* description header */
+.description-block>.description-header {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+}
+
+/* description text */
+.description-block>.description-text {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #808080;
+  font-weight: normal;
+}
+
+/* value boxes */
+.small-box.bg-yellow {
+  background-color: #004b8d !important;
+}
+
+/* treemap sidebar positioning */
+.direct-chat-contacts-open .direct-chat-contacts {
+  width: 50%;
+  right: 0;
+}
+
+.direct-chat-contacts {
+  width: 50%;
+  right: 0;
+}
+
+/* treemap sidebar button */
+.box-tools.pull-right .btn-warning {
+  background: #56af31 !important;
+  background-color: #56af31 !important;
+}
+
+/* treemap sidebar button hover */
+.box-tools.pull-right .btn-warning:hover {
+  background: white !important;
+  background-color: white !important;
+  color: #6D6964 !important;
+}
+
+/* títulos de conjuntura */
+h1 {
+  color: #004b8d;
+  font-family: "WhitneyHTF";
+  text-align: center;
+}
+
+/* links */
+.link {
+ font-size: 13px;
+ color: #56af31;
+ font-weight:600;
+ text-align: center;
+ padding: 5px;
+
+  
+}
+
+/* corpo da página inicial dos fundos */
+.fundos-body {
+  text-align: justify;
+  font-size: 18px;
+  color: #004b8d;
+  margin: 10px
+
+}
+
+
+/* corpo dos fundos */
+.fundos-text {
+  text-align: justify;
+  font-size: 22px;
+  color: #004b8d;
+  margin: 2px
+  border-width: thin;
+}
+

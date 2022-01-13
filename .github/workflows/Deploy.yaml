@@ -1,0 +1,48 @@
+on:
+  push:
+    branches:
+      - main
+      - master
+
+name: Deploy to ShinyApps.io
+
+jobs:
+  Deploy:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        r-version: ['4.1.0']
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: Instalar R ${{ matrix.r-version }}
+        uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: ${{ matrix.r-version }}
+
+      - name: Install dependencies
+        uses: r-lib/actions/setup-r-dependencies@v1
+        with:
+          cache-version: 1
+          extra-packages: |
+            rsconnect
+            RcppArmadillo
+            cpp11
+            progress
+
+      - name: Conectando ao ShinyApps
+        env:
+          SHINY_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
+          SHINY_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
+        run: |
+          shiny_token = Sys.getenv("SHINY_TOKEN")
+          shiny_secret = Sys.getenv("SHINY_SECRET")
+          rsconnect::setAccountInfo('albersonmiranda', token = shiny_token, secret = shiny_secret)
+          options(rsconnect.locale.cache = FALSE, rsconnect.locale = "pt_BR.UTF-8")
+        shell: Rscript {0}
+
+      - name: Deploy to ShinyApps
+        run: |
+          rsconnect::deployApp(forceUpdate = getOption("rsconnect.force.update.apps", TRUE))
+        shell: Rscript {0}
