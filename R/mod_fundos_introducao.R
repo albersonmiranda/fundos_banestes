@@ -18,15 +18,8 @@ mod_fundos_introducao_ui <- function(id) {
       br(),
       tags$div(
         class = "fundos-body",
-        "Fundos de investimento funcionam como uma aplicação financeira coletiva e são administrados por gestores especializados, para uma tomada de decisão mais assertiva.",
-        "Os Fundos Banestes possuem diversas modalidades de investimento, que variam de acordo com o capital aplicado e expectativa de retorno, a curto, médio ou longo prazo."
+        ""
       ),
-      br(),
-      tags$div(
-        class = "fundos-body",
-        "Aqui você encontra nossa lista completa com opções de Fundos em Renda Fixa, Ações e Multimercado."
-      ),
-      br(),
 
       # Action Button
 

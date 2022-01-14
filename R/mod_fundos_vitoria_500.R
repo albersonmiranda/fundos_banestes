@@ -4,22 +4,20 @@
 #'
 #' @param id,input,output,session Internal parameters for {shiny}.
 #'
-#' @noRd 
+#' @noRd
 #'
-#' @importFrom shiny NS tagList 
-mod_fundos_vitoria_500_ui <- function(id){
+#' @importFrom shiny NS tagList
+mod_fundos_vitoria_500_ui <- function(id) {
   ns <- NS(id)
   tagList(
     fluidPage(
       fluidRow(
-        tags$div(class = "conj-tit",br(),
-                 "Fundos Banestes de Renda Fixa"),
+        tags$div(
+          class = "conj-tit", br(),
+          "Fundos Banestes de Renda Fixa"
+        ),
         br(),
-        tags$div(class = "fundos-text",
-                 "Os Fundos de Renda Fixa têm uma carteira composta por, pelo menos, 80% dos seus ativos em títulos de renda fixa. São fundos voltados para o investidor com perfil conservador porque os riscos são mais baixos mas, por outro lado, oferecem um potencial menor de retorno."),
-                 
-        br(), br(),
-        
+
         # resenha
         box(
           title = tags$div("BANESTES VITÓRIA 500 FIC de FI", class = "res-tit"),
@@ -33,22 +31,25 @@ mod_fundos_vitoria_500_ui <- function(id){
           enable_dropdown = FALSE,
           tags$div(
             class = "res-body",
-            HTML(resenhas_fundos$vitoria500)),
-          
+            HTML(resenhas_fundos$vitoria500)
+          ),
           tags$a(
-            href="https://www.banestes.com.br/investimentos/pdf/lamina_Vitoria_500.pdf", target="_blank",
+            href = "https://www.banestes.com.br/investimentos/pdf/lamina_Vitoria_500.pdf", target = "_blank",
             "Lâmina",
-            class = "link"),
+            class = "link"
+          ),
           tags$a(
-            href="https://www.banestes.com.br/investimentos/pdf/regulamento-vitoria-500.pdf", target="_blank",
+            href = "https://www.banestes.com.br/investimentos/pdf/regulamento-vitoria-500.pdf", target = "_blank",
             "Regulamento",
-            class = "link"),
+            class = "link"
+          ),
           tags$a(
-            href="https://www.banestes.com.br/investimentos/pdf/adesao-vitoria-500.pdf", target="_blank",
+            href = "https://www.banestes.com.br/investimentos/pdf/adesao-vitoria-500.pdf", target = "_blank",
             "Termo de adesão",
-            class = "link"),
+            class = "link"
+          ),
         ),
-        
+
         # fundo vitória 500
         box(
           title = tags$div("Desempenho do Fundo", class = "box-graf"),
@@ -81,7 +82,6 @@ mod_fundos_vitoria_500_ui <- function(id){
                 header = paste(scales::percent(tail(fundos$Vitoria_500$rentabilidade, 1), 0.1), "de rentabilidade acumulada"),
                 rightBorder = FALSE,
                 marginBottom = FALSE
-                
               )
             )
           )
@@ -93,16 +93,16 @@ mod_fundos_vitoria_500_ui <- function(id){
 
 #' fundos_vitoria_500 Server Functions
 #'
-#' @noRd 
-mod_fundos_vitoria_500_server <- function(id){
-  moduleServer( id, function(input, output, session){
+#' @noRd
+mod_fundos_vitoria_500_server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     ns <- session$ns
- 
+
     # plot fundo
     output$plot1 <- renderPlotly({
       plot_ly(
-        data = fundos$Vitoria_500[1:nrow(fundos$Vitoria_500) - 1, ], 
-        x = ~as.Date(mes), y = ~rentabilidade_acum,
+        data = fundos$Vitoria_500[1:nrow(fundos$Vitoria_500) - 1, ],
+        x = ~ as.Date(mes), y = ~rentabilidade_acum,
         type = "scatter", mode = "lines", name = "Fundo Banestes Vitória 500", marker = list(color = "#004B8D")
       ) %>%
         add_trace(
@@ -115,11 +115,11 @@ mod_fundos_vitoria_500_server <- function(id){
             title = "rentabilidade", tickformat = ".1%"
           ),
           xaxis = list(
-            type = 'date',
+            type = "date",
             tickformat = "%b %Y"
           ),
           showlegend = TRUE,
-          legend = list(orientation = 'h')
+          legend = list(orientation = "h")
         )
     })
   })
@@ -127,6 +127,6 @@ mod_fundos_vitoria_500_server <- function(id){
 
 ## To be copied in the UI
 # mod_fundos_vitoria_500_ui("fundos_vitoria_500_ui_1")
-    
+
 ## To be copied in the server
 # mod_fundos_vitoria_500_server("fundos_vitoria_500_ui_1")

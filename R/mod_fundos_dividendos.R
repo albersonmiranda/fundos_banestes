@@ -4,22 +4,21 @@
 #'
 #' @param id,input,output,session Internal parameters for {shiny}.
 #'
-#' @noRd 
+#' @noRd
 #'
-#' @importFrom shiny NS tagList 
-mod_fundos_dividendos_ui <- function(id){
+#' @importFrom shiny NS tagList
+mod_fundos_dividendos_ui <- function(id) {
   ns <- NS(id)
   tagList(
     fluidPage(
       fluidRow(
-        tags$div(class = "conj-tit",br(),
-                 "Fundos Banestes de Ações"),
+        tags$div(
+          class = "conj-tit", br(),
+          "Fundos Banestes de Ações"
+        ),
         br(),
-        tags$div(class = "fundos-text",
-                 "Os Fundos de Ações devem aplicar no mínimo 67% dos seus ativos em ações. São fundos voltados para o investidor com perfil mais arrojado, que tem como objetivo maior rentabilidade, e para isso está disposto a assumir maiores riscos."),
-        
-        br(), br(),
-        
+
+
         # resenha
         box(
           title = tags$div("BANESTES DIVIDENDOS FI", class = "res-tit"),
@@ -36,23 +35,27 @@ mod_fundos_dividendos_ui <- function(id){
             HTML(resenhas_fundos$dividendos)
           ),
           tags$a(
-            href="https://www.banestes.com.br/investimentos/pdf/lamina_Dividendos.pdf", target="_blank",
+            href = "https://www.banestes.com.br/investimentos/pdf/lamina_Dividendos.pdf", target = "_blank",
             "Lâmina",
-            class = "link"),
+            class = "link"
+          ),
           tags$a(
-            href="https://www.banestes.com.br/investimentos/pdf/regulamento_dividendos.pdf", target="_blank",
+            href = "https://www.banestes.com.br/investimentos/pdf/regulamento_dividendos.pdf", target = "_blank",
             "Regulamento",
-            class = "link"),
+            class = "link"
+          ),
           tags$a(
-            href="https://www.banestes.com.br/investimentos/pdf/publicitario_FDividendos.pdf", target="_blank",
+            href = "https://www.banestes.com.br/investimentos/pdf/publicitario_FDividendos.pdf", target = "_blank",
             "Relatório",
-            class = "link"),
+            class = "link"
+          ),
           tags$a(
-            href="https://www.banestes.com.br/investimentos/pdf/adesao_dividendos.pdf", target="_blank",
+            href = "https://www.banestes.com.br/investimentos/pdf/adesao_dividendos.pdf", target = "_blank",
             "Termo de adesão",
-            class = "link"),
+            class = "link"
+          ),
         ),
-        
+
         # fundo dividendos fi
         box(
           title = tags$div("Desempenho do Fundo", class = "box-graf"),
@@ -85,7 +88,6 @@ mod_fundos_dividendos_ui <- function(id){
                 text = "nos últimos 12 meses",
                 rightBorder = FALSE,
                 marginBottom = FALSE
-                
               )
             )
           )
@@ -98,40 +100,40 @@ mod_fundos_dividendos_ui <- function(id){
 
 #' fundos_dividendos Server Functions
 #'
-#' @noRd 
-mod_fundos_dividendos_server <- function(id){
-  moduleServer( id, function(input, output, session){
+#' @noRd
+mod_fundos_dividendos_server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     ns <- session$ns
- 
+
     # plot fundo
-        output$plot1 <- renderPlotly({
-          plot_ly(
-            data = fundos$Dividendos[1:nrow(fundos$Dividendos) - 1, ], 
-            x = ~as.Date(mes), y = ~rentabilidade_acum,
-            type = "scatter", mode = "lines", name = "Fundo Banestes Dividendos", marker = list(color = "#004B8D")
-          ) %>%
-            add_trace(
-              data = fundos$Dividendos[1:nrow(fundos$Dividendos) - 1, ],
-              y = ~indice_acum, name = "IBOVESPA", marker = list(color = "#56af31"), line = list(color = "#56af31")
-            ) %>%
-            layout(
-              title = "", xaxis = list(title = ""),
-              yaxis = list(
-                title = "rentabilidade", tickformat = ".1%"
-              ),
-              xaxis = list(
-                type = 'date',
-                tickformat = "%b %Y"
-              ),
-              showlegend = TRUE,
-              legend = list(orientation = 'h')
-            )
-        })
-      })
-    }
-    
+    output$plot1 <- renderPlotly({
+      plot_ly(
+        data = fundos$Dividendos[1:nrow(fundos$Dividendos) - 1, ],
+        x = ~ as.Date(mes), y = ~rentabilidade_acum,
+        type = "scatter", mode = "lines", name = "Fundo Banestes Dividendos", marker = list(color = "#004B8D")
+      ) %>%
+        add_trace(
+          data = fundos$Dividendos[1:nrow(fundos$Dividendos) - 1, ],
+          y = ~indice_acum, name = "IBOVESPA", marker = list(color = "#56af31"), line = list(color = "#56af31")
+        ) %>%
+        layout(
+          title = "", xaxis = list(title = ""),
+          yaxis = list(
+            title = "rentabilidade", tickformat = ".1%"
+          ),
+          xaxis = list(
+            type = "date",
+            tickformat = "%b %Y"
+          ),
+          showlegend = TRUE,
+          legend = list(orientation = "h")
+        )
+    })
+  })
+}
+
 ## To be copied in the UI
 # mod_fundos_dividendos_ui("fundos_dividendos_ui_1")
-    
+
 ## To be copied in the server
 # mod_fundos_dividendos_server("fundos_dividendos_ui_1")

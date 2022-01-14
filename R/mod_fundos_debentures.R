@@ -4,22 +4,21 @@
 #'
 #' @param id,input,output,session Internal parameters for {shiny}.
 #'
-#' @noRd 
+#' @noRd
 #'
-#' @importFrom shiny NS tagList 
-mod_fundos_debentures_ui <- function(id){
+#' @importFrom shiny NS tagList
+mod_fundos_debentures_ui <- function(id) {
   ns <- NS(id)
   tagList(
     fluidPage(
       fluidRow(
-        tags$div(class = "conj-tit",br(),
-                 "Fundos Banestes Multimercado"),
+        tags$div(
+          class = "conj-tit", br(),
+          "Fundos Banestes Multimercado"
+        ),
         br(),
-        tags$div(class = "fundos-text",
-                 "Os Fundos Multimercados podem aplicar em diferentes ativos, como renda fixa, câmbio, ações, entre outros. Eles funcionam como meio termo, tanto quando o assunto é risco, como também quando é potencial de retorno."),
-        
-        br(), br(),
-        
+
+
         # resenha
         box(
           title = tags$div("BANESTES  DEBÊNTURES INCENTIVADAS FIC de FI", class = "res-tit"),
@@ -36,23 +35,27 @@ mod_fundos_debentures_ui <- function(id){
             HTML(resenhas_fundos$debentures)
           ),
           tags$a(
-            href="https://www.banestes.com.br/investimentos/pdf/lamina_Debentures.pdf", target="_blank",
+            href = "https://www.banestes.com.br/investimentos/pdf/lamina_Debentures.pdf", target = "_blank",
             "Lâmina",
-            class = "link"),
+            class = "link"
+          ),
           tags$a(
-            href="https://www.banestes.com.br/investimentos/pdf/regulamento-debentures-incentivadas.pdf", target="_blank",
+            href = "https://www.banestes.com.br/investimentos/pdf/regulamento-debentures-incentivadas.pdf", target = "_blank",
             "Regulamento",
-            class = "link"),
+            class = "link"
+          ),
           tags$a(
-            href="https://www.banestes.com.br/investimentos/pdf/publicitario_debentures-incentivadas.pdf", target="_blank",
+            href = "https://www.banestes.com.br/investimentos/pdf/publicitario_debentures-incentivadas.pdf", target = "_blank",
             "Relatório",
-            class = "link"),
+            class = "link"
+          ),
           tags$a(
-            href="https://www.banestes.com.br/investimentos/pdf/adesao-debentures-incentivadas.pdf", target="_blank",
+            href = "https://www.banestes.com.br/investimentos/pdf/adesao-debentures-incentivadas.pdf", target = "_blank",
             "Termo de adesão",
-            class = "link"),
+            class = "link"
+          ),
         ),
-        
+
         # fundo debêntures incentivadas
         box(
           title = tags$div("Desempenho do Fundo", class = "box-graf"),
@@ -85,7 +88,6 @@ mod_fundos_debentures_ui <- function(id){
                 text = "nos últimos 12 meses",
                 rightBorder = FALSE,
                 marginBottom = FALSE
-                
               )
             )
           )
@@ -98,16 +100,16 @@ mod_fundos_debentures_ui <- function(id){
 
 #' fundos_debentures Server Functions
 #'
-#' @noRd 
-mod_fundos_debentures_server <- function(id){
-  moduleServer( id, function(input, output, session){
+#' @noRd
+mod_fundos_debentures_server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     ns <- session$ns
- 
+
     # plot fundo
     output$plot1 <- renderPlotly({
       plot_ly(
-        data = fundos$Debentures[1:nrow(fundos$Debentures) - 1, ], 
-        x = ~as.Date(mes), y = ~rentabilidade_acum,
+        data = fundos$Debentures[1:nrow(fundos$Debentures) - 1, ],
+        x = ~ as.Date(mes), y = ~rentabilidade_acum,
         type = "scatter", mode = "lines", name = "Fundo Banestes Debêntures Incentivadas", marker = list(color = "#004B8D")
       ) %>%
         add_trace(
@@ -120,17 +122,17 @@ mod_fundos_debentures_server <- function(id){
             title = "rentabilidade", tickformat = ".1%"
           ),
           xaxis = list(
-            type = 'date',
+            type = "date",
             tickformat = "%b %Y"
           ),
           showlegend = TRUE,
-          legend = list(orientation = 'h')
+          legend = list(orientation = "h")
         )
     })
   })
 }
 ## To be copied in the UI
 # mod_fundos_debentures_ui("fundos_debentures_ui_1")
-    
+
 ## To be copied in the server
 # mod_fundos_debentures_server("fundos_debentures_ui_1")
