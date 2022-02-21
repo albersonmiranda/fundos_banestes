@@ -41,8 +41,7 @@ mod_fundos_invest_money_ui <- function(id){
             "Termo de adesão",
             class = "link"),
         ),
-        
-        
+
         # fundo invest money
         box(
           title = tags$div("Desempenho do Fundo", class = "box-graf"),
@@ -54,9 +53,9 @@ mod_fundos_invest_money_ui <- function(id){
           solidHeader = TRUE,
           tags$div("Fundo de Investimento Renda Fixa", class = "box-subtit"),
           tags$div("Variação % mensal", class = "box-body"),
-          plotlyOutput(ns("plot1")),
+          withSpinner(plotlyOutput(ns("plot1")), type = 1, color = "#004b8d", size = 1.5),
           tags$div("fonte: Banestes DTVM", style = "box-legenda"),
-         
+
           footer = fluidRow(
             column(
               width = 12,
@@ -92,7 +91,7 @@ mod_fundos_invest_money_ui <- function(id){
 mod_fundos_invest_money_server <- function(id){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
-    
+
     # plot fundo
     output$plot1 <- renderPlotly({
       plot_ly(

@@ -57,7 +57,7 @@ mod_fundos_institucional_ui <- function(id) {
           solidHeader = TRUE,
           tags$div("Fundo de Investimento em Renda Fixa", class = "box-subtit"),
           tags$div("Variação % mensal", class = "box-body"),
-          plotlyOutput(ns("plot1")),
+          withSpinner(plotlyOutput(ns("plot1")), type = 1, color = "#004b8d", size = 1.5),
           tags$div("fonte: Banestes DTVM", style = "box-legenda"),
           footer = fluidRow(
             column(
@@ -78,7 +78,7 @@ mod_fundos_institucional_ui <- function(id) {
                 text = "nos últimos 12 meses",
                 rightBorder = FALSE,
                 marginBottom = FALSE
-                
+
               )
             )
           )
