@@ -12,7 +12,7 @@ mod_invest_public_ui <- function(id){
   tagList(
     fluidPage(
       fluidRow(
-        
+
         # resenha 
         box(
           title = tags$div("BANESTES INVEST PUBLIC AUTOMÁTICO FI", class = "res-tit"),
@@ -28,8 +28,8 @@ mod_invest_public_ui <- function(id){
             class = "res-body",
             HTML(resenhas_fundos$investpublic)
           ),
-         
-          
+
+
            tags$a(
             href="https://www.banestes.com.br/investimentos/pdf/lamina_Invest_Public.pdf", target="_blank",
             "Lâmina",
@@ -43,9 +43,9 @@ mod_invest_public_ui <- function(id){
             "Termo de adesão",
             class = "link"),
         ),
-        
-        
-        
+
+
+
       #fundo Invest Public
       box(
         title = tags$div("Desempenho do Fundo", class = "box-graf"),
@@ -57,9 +57,9 @@ mod_invest_public_ui <- function(id){
         solidHeader = TRUE,
         tags$div("Fundo de Investimento em Renda Fixa", class = "box-subtit"),
         tags$div("Variação % mensal", class = "box-body"),
-        plotlyOutput(ns("plot1")),
+        withSpinner(plotlyOutput(ns("plot1")), type = 1, color = "#004b8d", size = 1.5),
         tags$div("fonte: Banestes DTVM", style = "box-legenda"),
-       
+
         footer = fluidRow(
           column(
             width = 12,
@@ -94,7 +94,7 @@ mod_invest_public_ui <- function(id){
 mod_invest_public_server <- function(id){
   moduleServer( id, function(input, output, session) {
     ns <- session$ns
- 
+
     #plot fundo Invest Public
     output$plot1 <- renderPlotly({
       plot_ly(

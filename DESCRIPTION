@@ -20,6 +20,7 @@ Imports:
     shiny,
     shinydashboard,
     shinydashboardPlus,
+    shinycssloaders,
     shinyjs,
     tidyr
 Encoding: UTF-8
